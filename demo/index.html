@@ -1,0 +1,60 @@
+<html>
+<head>
+  <link rel="import" href="../corespring-pie-paper-checkbox.html" />
+  <script type="text/javascript" src="../../lodash/dist/lodash.js"></script>
+  <style>
+    .header{
+      margin-top: 20px;
+    }
+    </style>
+</head>
+<body>
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function(){
+      var base = {label: 'Apple', value: 'a'};
+      document.querySelector('#one').model = base; 
+      document.querySelector('#two').model = _.assign({}, base, {checked: true}); 
+      document.querySelector('#three').model = _.assign({}, base, {checked: true, disabled:true}); 
+      document.querySelector('#four').model = _.assign({}, base, {
+        checked: true, 
+        disabled:false, 
+        correct: true
+      });
+      document.querySelector('#five').model = _.assign({}, base, {
+        checked: true, 
+        disabled:true, 
+        correct:false 
+      });
+      
+      var boundModel = _.assign({}, base);
+      
+      window.onCheckboxChanged = function(){
+        console.log(arguments);
+      }
+      
+      setInterval(function(){
+        console.log(boundModel);
+      }, 2000);
+      
+      document.querySelector('#six').model = boundModel; 
+    });
+    
+    
+  </script>
+  <div class="header">Nothing:</div>
+  <corespring-pie-paper-checkbox id="one"></corespring-pie-paper-checkbox>
+  <div class="header">Checked:</div>
+  <corespring-pie-paper-checkbox id="two"></corespring-pie-paper-checkbox>
+  <div class="header">Disabled + Checked:</div>
+  <corespring-pie-paper-checkbox id="three"></corespring-pie-paper-checkbox>
+  <div class="header">Correct:</div>
+  <corespring-pie-paper-checkbox id="four"></corespring-pie-paper-checkbox>
+  <div class="header">Incorrect:</div>
+  <corespring-pie-paper-checkbox id="five"></corespring-pie-paper-checkbox>
+  <div class="header">Databinding out:</div>
+  <corespring-pie-paper-checkbox 
+    id="six"
+    on-change="onCheckboxChanged()"></corespring-pie-paper-checkbox>
+</body>
+
+</html>
