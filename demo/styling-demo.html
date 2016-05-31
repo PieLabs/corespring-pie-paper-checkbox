@@ -1,0 +1,24 @@
+<link rel="import" href="../polymer/polymer.html"/>
+<link rel="import" href="../corespring-pie-paper-checkbox.html" />
+
+<dom-module is="styling-demo">
+
+  <template class="blah">
+
+    <style>
+      :host {
+        --corespring-checkbox-label-color: red;
+      }
+    </style>
+    <corespring-pie-paper-checkbox model="{{model}}"></corespring-pie-paper-checkbox>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'styling-demo',
+      properties: {
+        model: {type: Object, notifiy:true}
+      }
+    });
+    </script>
+</dom-module>

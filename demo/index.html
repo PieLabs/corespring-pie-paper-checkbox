@@ -1,10 +1,15 @@
 <html>
 <head>
   <link rel="import" href="../corespring-pie-paper-checkbox.html" />
+  <link rel="import" href="./styling-demo.html" />
   <script type="text/javascript" src="../../lodash/dist/lodash.js"></script>
   <style>
     .header{
       margin-top: 20px;
+    }
+
+    #five{
+      --corespring-checkbox-label-color: white;
     }
     </style>
 </head>
@@ -50,7 +55,7 @@
   <div class="header">Correct:</div>
   <corespring-pie-paper-checkbox id="four"></corespring-pie-paper-checkbox>
   <div class="header">Incorrect:</div>
-  <corespring-pie-paper-checkbox id="five"></corespring-pie-paper-checkbox>
+  <styling-demo id="five"></styling-demo>
   <div class="header">Databinding out:</div>
   <corespring-pie-paper-checkbox 
     id="six"

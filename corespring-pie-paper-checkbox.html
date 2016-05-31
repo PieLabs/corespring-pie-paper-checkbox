@@ -1,40 +1,39 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../paper-checkbox/paper-checkbox.html"/>
+<link rel="import" href="../paper-checkbox/paper-checkbox.html" />
 <dom-module id="corespring-pie-paper-checkbox">
-  <style>
-    
-    .incorrect {
-      border-color: #ED831C;
-    }
-    
-    .correct {
-      border-color: #12D34F;
-    }
-
-    .missing {
-      border-color: #F2E239;
-    }
-    
-    paper-checkbox{
-      margin-top: 2px;
-      margin-bottom: 2px;
-      padding: 4px;
-      width: 400px;
-      border-width: 1px;
-      border-color: rgba(0, 0, 0, 0);
-      border-style: solid; 
-    }
-  </style>
   <template>
-    <div> 
-      <paper-checkbox 
-        value="{{model.value}}" 
-        checked="{{model.checked}}"
-        on-change="onChange"
-        class="choice"
-        class$="{{getCheckboxClass(model.correct)}}"
+    <style>
+
+      :host{
+        --paper-checkbox-label-color: var(--corespring-checkbox-label-color);
+      }
+
+      .incorrect {
+        border-color: var(--coresping-checkbox-incorrect-border-color, #ED831C);
+      }
+      
+      .correct {
+        border-color: var(--corespring-checkbox-correct-border-color, #12D34F);
+      }
+      
+      .missing {
+        border-color: var(--corespring-checkbox-missing-border-color, #F2E239);
+      }
+      
+      paper-checkbox {
+        margin-top: 2px;
+        margin-bottom: 2px;
+        padding: 4px;
+        width: 400px;
+        border-width: 1px;
+        border-color: rgba(0, 0, 0, 0);
+        border-style: solid;
+      }
+    </style>
+    <div>
+      <paper-checkbox value="{{model.value}}" checked="{{model.checked}}" on-change="onChange" class="choice" class$="{{getCheckboxClass(model.correct)}}"
         disabled="{{model.disabled}}">{{model.label}}</paper-checkbox>
-      </div>
+    </div>
   </template>
 </dom-module>
 <script>
