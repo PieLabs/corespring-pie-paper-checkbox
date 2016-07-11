@@ -1,5 +1,11 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-checkbox/paper-checkbox.html" />
+<!-- 
+
+  @demo demo/index.html
+  @demo-two demo/styling-demo.html
+-->
+
 <dom-module id="corespring-pie-paper-checkbox">
   <template>
     <style>
@@ -31,7 +37,7 @@
       }
     </style>
     <div>
-      <paper-checkbox value="{{model.value}}" checked="{{model.checked}}" on-change="onChange" class="choice" class$="{{getCheckboxClass(model.correct)}}"
+      <paper-checkbox value="{{model.value}}" checked="{{model.checked}}" on-change="_onChange" class="choice" class$="{{_getCheckboxClass(model.correct)}}"
         disabled="{{model.disabled}}">{{model.label}}</paper-checkbox>
     </div>
   </template>
@@ -40,13 +46,29 @@
   Polymer({
     is: "corespring-pie-paper-checkbox",
     properties: {
+      /**
+       * Fired when a checkbox is checked/unchecked.
+       * @event checkbox-change
+       * 
+       */
+      /**
+       * ```javascript
+       * {
+       *   label: '',
+       *   value: '',
+       *   checked: true|false
+       *   correct: true|false
+       *   disabled: true|false 
+       * }
+       * ```
+       */
       model: {type: Object, notify: true}
     },
-    onChange: function(event){
+    _onChange: function(event){
       event.stopImmediatePropagation();
       this.fire('checkbox-change');
     },
-    getCheckboxClass: function(correct){
+    _getCheckboxClass: function(correct){
       //TODO: add missing support as per ev's comp
       if(typeof correct === 'boolean'){
         return correct ? 'correct' : 'incorrect';
